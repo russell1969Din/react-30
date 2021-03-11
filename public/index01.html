@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Moja React Appka</title>
+
+  <!-- Temporary JQeury / AJAX -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <!-- End Temporary -->
+</head>
+
+<body>
+  <div id="var-01"></div>
+  <div id="var-02"></div>
+  <div id="var-03"></div>
+  <div id="var-04"></div>
+  <script type="text/babel">
+    class Var01 extends React.Component {
+      render() {
+        return (
+          React.createElement(
+            'h1',
+            { className: 'var01' },
+            'Toto je prvý variant'
+          )
+        );
+      }
+    }
+    ReactDOM.render(<Var01 />, document.getElementById('var-01'));
+
+    //===================
+    class Var02 extends React.Component {
+      render() {
+        return (
+          <h2 className="var02">Toto je druhý variant</h2>
+        );
+      }
+    }
+    ReactDOM.render(<Var02 />, document.getElementById('var-02'));
+
+    //===================
+    var inner = <h3 className="var03">Toto je tretí variant</h3>
+    var component = document.querySelector('#var-03');
+    ReactDOM.render(inner, component);
+
+    //===================
+    class Var04 extends React.Component {
+      render() {
+        return <h4 className="var04">Toto je štvrtý variant</h4>
+      }
+    }
+    var component = document.querySelector('#var-04');
+    ReactDOM.render(<Var04 />, component);
+  </script>
+</body>
+
+</html>
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    border: dotted 1px #cc0000;
+  }
+
+  .var01 {
+    padding: 0 0 0 0;
+    color: blue;
+    border: dotted 1px blue;
+  }
+
+  .var02 {
+    padding: 0 0 0 0;
+    color: red;
+    border: dotted 1px red;
+  }
+
+  .var03 {
+    padding: 0 0 0 0;
+    color: green;
+    border: dotted 1px green;
+  }
+
+  .var04 {
+    padding: 0 0 0 0;
+    color: magenta;
+    border: dotted 1px magenta;
+  }
+</style>

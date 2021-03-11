@@ -1,0 +1,66 @@
+
+.demo .notificationsFrame .content .item p {
+  font-size: 15px;
+  line-height: 20px;
+  margin: 0px 40px 0px 0px;
+  font-family: "Open Sans", Lora, Times, no-serif;
+}
+
+.demo .notificationsFrame .content .item p b {
+  font-weight: 600;
+}
+
+.demo .notificationsFrame .content .item .right {
+  position: absolute;
+  right: 5px;
+  font-size: 11px;
+  top: 11px;
+}
+
+.demo .notificationsFrame .content .item .commentCount {
+  position: absolute;
+  right: 15px;
+  font-size: 12px;
+  top: 11px;
+}
+
+.demo .notificationsFrame .content .item .commentCount:after {
+  content: "\f075";
+  font-family: FontAwesome;
+  position: absolute;
+  font-size: 20px;
+  color: #ebebeb;
+  top: -50%;
+  left: 100%;
+  margin-left: 10px;
+  z-index: 3;
+}
+
+.demo .notificationsFrame .content .item .commentCount:hover:after {
+  color: lightblue;
+}
+
+.demo .notificationsFrame .footer {
+  position: relative;
+  background: #fff;
+  margin: auto;
+  height: 30px;
+  border-top: 1px solid #eee;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.demo .notificationsFrame .footer button {
+  background: #eee;
+  position: absolute;
+  width: 100%;
+  right: 0px;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  border: 0;
+}
+
+.demo .notificationsFrame .footer button i {
+  margin: 0 10px;
+}

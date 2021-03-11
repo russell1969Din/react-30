@@ -1,0 +1,92 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Clock</title>
+    <!-- Script tags including React -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <link href="./Clock.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="app"></div>
+    <script type="text/babel">
+
+        class Clock extends React.Component {
+            constructor(props) {
+                super(props);
+                this.myClock = this.getTodayDateAndTime();
+            }
+
+            // componentDitMounth() {
+            //     console.log(2);
+            //     //this.setTimmer();
+            // }
+
+            // setTimmer() {
+            //     console.log(3);
+            //     clearTimeout(this.timeout);
+            //     this.timeout = setTimeOut(this.updateClock.bind(this), 1000);
+            // }
+
+            // updateClock() {
+            //     console.log(4);
+            //     this.setState(this.getTime, this.setTimmer);
+            // }
+
+            getTodayDateAndTime() {
+                const crToday = new Date();
+                console.log(crToday.getMonth());
+                return {
+                    day: crToday.getDate(),
+                    month: crToday.getMonth(),
+                    year: crToday.getFullYear(),
+                    hours: crToday.getHours(),
+                    minutes: crToday.getMinutes(),
+                    seconds: crToday.getSeconds(),
+                    ampm: crToday.getHours() >= 12 ? 'poobede' : 'doobeda'
+                };
+            }
+
+            stringMonth(month) {
+                const aMonth = [
+                    'Január',
+                    'Február',
+                    'Marec',
+                    'Apríl',
+                    'Máj',
+                    'Jún',
+                    'Júl',
+                    'August',
+                    'September',
+                    'Október',
+                    'November',
+                    'December'
+                ];
+                return aMonth[month];
+            }
+
+            render() {
+                const { day, month, year, hours, minutes, seconds, ampm } = this.myClock;
+                return (
+                    <div className="clock">
+                        &nbsp;::&nbsp;
+                        {day > 9 ? day : `0${day}`}.
+                        {this.stringMonth(month)}&nbsp;
+                        {year}&nbsp;&nbsp;&nbsp;
+                        {hours > 9 ? hours : `0${hours}`}:
+                        {minutes > 9 ? minutes : `0${minutes}`}:
+                        {seconds > 9 ? seconds : `0${seconds}`} {(ampm)}
+                    </div>
+                );
+            }
+        }
+
+        ReactDOM.render(<Clock />, document.querySelector('#app'));
+
+    </script>
+</body>
+
+</html>
