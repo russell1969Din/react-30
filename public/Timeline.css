@@ -1,9 +1,16 @@
+.init {
+color:#cc0000;
+font-weight:bold;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+font-size: 20px;
+}
 
 .demo .notificationsFrame .content .item p {
   font-size: 15px;
   line-height: 20px;
   margin: 0px 40px 0px 0px;
   font-family: "Open Sans", Lora, Times, no-serif;
+  
 }
 
 .demo .notificationsFrame .content .item p b {
@@ -34,6 +41,7 @@
   left: 100%;
   margin-left: 10px;
   z-index: 3;
+  
 }
 
 .demo .notificationsFrame .content .item .commentCount:hover:after {
@@ -63,4 +71,8 @@
 
 .demo .notificationsFrame .footer button i {
   margin: 0 10px;
+}
+
+.item {
+  padding: 50 0 0 50;
 }
