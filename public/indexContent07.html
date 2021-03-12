@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Hello world</title>
+    <!-- Script tags including React -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/moment@2.24.0/min/moment.min.js"></script>
+
+    <!-- this file will declare our `data` variable -->
+    <script src="./data.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        type="text/css" />
+    <link href="./Timeline.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+    <div class="demo">
+        <div class="notificationsFrame">
+            <div id="app"></div>
+        </div>
+    </div>
+    <script type="text/babel">
+        class Content extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    person: [],
+                    //test: []
+                };
+            }
+
+            componentWillMount() {
+                //this.setState({ people: data, test: data });
+                this.setState({ people: data });
+            }
+
+
+            render() {
+                const { people } = this.state;
+                // const { test } = this.state;
+
+                return (
+                    <div className="content">
+                        <div className="line"></div>
+                        {people.map(person => (
+                            <ViewActivity person={person} />
+                        ))}
+                        {/*test.map(tester => (
+                            <ViewTester tester={tester} />
+                        ))*/}
+                    </div>);
+            }
+        }
+
+
+        class ViewActivity extends React.Component {
+            render() {
+                const { person } = this.props;
+                return (<div className="item">
+                    <div className={"avatar"}>
+                        <img alt="avatar" src={person.actor.avatar_url} />
+                    </div>
+
+                    <span className={"time"}>
+                        {moment(person.created_at).fromNow}
+                    </span>
+                    <p>
+                        {person.actor.display_login} {person.payload_action}
+                    </p>
+                    <div className={"right"}>
+                        {person.repo.name}
+                    </div>
+                </div>);
+            }
+
+        }
+
+        // class ViewTester extends React.Component {
+        //     render() {
+        //         const { tester } = this.props;
+        //         return (<div className="item">
+        //             <div className={"avatar"}>
+        //                 <img alt="avatar" src={tester.actor.avatar_url} />
+        //             </div>
+
+        //             <span className={"time"}>
+        //                 {moment(tester.created_at).fromNow}
+        //             </span>
+        //             <p>
+        //                 {tester.actor.display_login} {tester.payload_action}
+        //             </p>
+        //             <div className={"right"}>
+        //                 {tester.repo.name}
+        //             </div>
+        //         </div>);
+        //     }
+
+        //}
+
+        ReactDOM.render(<Content />, document.querySelector('#app'));
+    </script>
+</body>
+
+</html>
