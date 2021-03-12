@@ -29,17 +29,19 @@
             constructor(props) {
                 super(props);
                 this.state = {
-                    person: []
+                    person: [],
+                    test: []
                 };
             }
 
             componentWillMount() {
-                this.setState({ people: data });
+                this.setState({ people: data, test: data });
             }
 
 
             render() {
                 const { people } = this.state;
+                const { test } = this.state;
 
                 return (
                     <div className="content">
@@ -47,7 +49,9 @@
                         {people.map(person => (
                             <ViewActivity person={person} />
                         ))}
-
+                        {test.map(tester => (
+                            <ViewTester tester={tester} />
+                        ))}
                     </div>);
             }
         }
@@ -62,13 +66,35 @@
                     </div>
 
                     <span className={"time"}>
-                        {moment(person.create_at).fromNow}
+                        {moment(person.created_at).fromNow}
                     </span>
                     <p>
                         {person.actor.display_login} {person.payload_action}
                     </p>
                     <div className={"right"}>
                         {person.repo.name}
+                    </div>
+                </div>);
+            }
+
+        }
+
+        class ViewTester extends React.Component {
+            render() {
+                const { tester } = this.props;
+                return (<div className="item">
+                    <div className={"avatar"}>
+                        <img alt="avatar" src={tester.actor.avatar_url} />
+                    </div>
+
+                    <span className={"time"}>
+                        {moment(tester.created_at).fromNow}
+                    </span>
+                    <p>
+                        {tester.actor.display_login} {tester.payload_action}
+                    </p>
+                    <div className={"right"}>
+                        {tester.repo.name}
                     </div>
                 </div>);
             }
